@@ -174,6 +174,98 @@
     margin: 2px 0 0;
     line-height: 1.4;
   }
+  .features {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 14px;
+  }
+  .feature-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 18px 16px;
+    border-left: 3px solid var(--accent);
+  }
+  .feature-card h3 {
+    font-family: var(--font-display);
+    font-size: 0.85rem;
+    font-weight: 600;
+    margin: 0 0 6px;
+    color: var(--fg);
+  }
+  .feature-card p {
+    font-size: 0.78rem;
+    color: var(--fg-muted);
+    margin: 0;
+    line-height: 1.5;
+  }
+  .flow {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+  }
+  .flow-step {
+    display: flex;
+    align-items: flex-start;
+    gap: 14px;
+    padding: 14px 0;
+  }
+  .flow-num {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background: var(--accent);
+    color: #fff;
+    font-family: var(--font-display);
+    font-size: 0.8rem;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+  .flow-content h3 {
+    font-family: var(--font-display);
+    font-size: 0.85rem;
+    font-weight: 600;
+    margin: 0;
+    color: var(--fg);
+  }
+  .flow-content p {
+    font-size: 0.78rem;
+    color: var(--fg-muted);
+    margin: 3px 0 0;
+    line-height: 1.5;
+  }
+  .results-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 12px;
+  }
+  .result-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 16px;
+    text-align: center;
+  }
+  .result-card .result-icon {
+    font-size: 1.4rem;
+    margin-bottom: 8px;
+  }
+  .result-card h3 {
+    font-family: var(--font-display);
+    font-size: 0.82rem;
+    font-weight: 600;
+    margin: 0 0 4px;
+    color: var(--fg);
+  }
+  .result-card p {
+    font-size: 0.75rem;
+    color: var(--fg-muted);
+    margin: 0;
+    line-height: 1.4;
+  }
   .tech-list {
     display: flex;
     flex-wrap: wrap;
@@ -236,28 +328,85 @@
 </div>
 
 <div class="section">
-  <div class="section-label">Sistem Mimarisi</div>
-  <div class="arch">
-    <div class="arch-layer">
-      <div class="arch-icon">&#128241;</div>
-      <div class="arch-text">
-        <h3>Kullanıcı Katmanı</h3>
-        <p>El terminalleri ve akıllı telefonlar üzerinden WiFi ile erişim; barkod okuma ve anlık veri girişi.</p>
+  <div class="section-label">Temel Özellikler</div>
+  <div class="features">
+    <div class="feature-card">
+      <h3>Kullanıcı Bazlı Görev Atama</h3>
+      <p>Sayılacak depo, koridor ve raf konumları her kullanıcıya özel olarak atanır. Aynı alanın birden fazla kişi tarafından sayılması engellenerek mükerrer sayım riski ortadan kaldırılır.</p>
+    </div>
+    <div class="feature-card">
+      <h3>Terminallere İş Emri Aktarımı</h3>
+      <p>Sayım görevleri merkezi sistemden el terminallerine anlık olarak iletilir. Kullanıcı, terminali açtığı anda kendisine atanan konumları ve sayım listesini görür.</p>
+    </div>
+    <div class="feature-card">
+      <h3>Gerçek Zamanlı İlerleme Takibi</h3>
+      <p>Her kullanıcının sayım ilerlemesi anlık olarak merkezi ekrandan izlenir. Tamamlanan, devam eden ve bekleyen görevler canlı olarak raporlanır.</p>
+    </div>
+    <div class="feature-card">
+      <h3>Fark Analizi & Uyarı Sistemi</h3>
+      <p>Sayım sonuçları sistem stoğu ile otomatik karşılaştırılır. Belirlenen tolerans eşiğini aşan farklar anında uyarı olarak ilgili yöneticiye bildirilir.</p>
+    </div>
+  </div>
+</div>
+
+<div class="section">
+  <div class="section-label">Süreç Akışı</div>
+  <div class="flow">
+    <div class="flow-step">
+      <div class="flow-num">1</div>
+      <div class="flow-content">
+        <h3>Sayım Planı Oluşturma</h3>
+        <p>Sayılacak depolar, konumlar ve raf adresleri belirlenir. Her bölge için sorumlu kullanıcılar atanır ve iş emirleri oluşturulur.</p>
       </div>
     </div>
-    <div class="arch-layer">
-      <div class="arch-icon">&#9889;</div>
-      <div class="arch-text">
-        <h3>Uygulama Katmanı</h3>
-        <p>Python / FastAPI tabanlı backend; gerçek zamanlı veri işleme ve çoklu kullanıcı yönetimi.</p>
+    <div class="flow-step">
+      <div class="flow-num">2</div>
+      <div class="flow-content">
+        <h3>İş Emirlerinin Terminallere Dağıtımı</h3>
+        <p>Oluşturulan iş emirleri WiFi üzerinden el terminallerine ve akıllı telefonlara anlık olarak aktarılır. Her kullanıcı yalnızca kendi görev alanını görür.</p>
       </div>
     </div>
-    <div class="arch-layer">
-      <div class="arch-icon">&#128451;</div>
-      <div class="arch-text">
-        <h3>Veri Katmanı</h3>
-        <p>SQLite veritabanı; sayım verileri, kullanıcı hareketleri ve stok eşleştirme kayıtları.</p>
+    <div class="flow-step">
+      <div class="flow-num">3</div>
+      <div class="flow-content">
+        <h3>Saha Sayımı & Barkod Okutma</h3>
+        <p>Kullanıcılar atanan konumlara giderek ürün barkodlarını okutup miktarları girer. Sistem, yanlış konumda yapılan sayımları anında uyarır.</p>
       </div>
+    </div>
+    <div class="flow-step">
+      <div class="flow-num">4</div>
+      <div class="flow-content">
+        <h3>Anlık Veri Senkronizasyonu</h3>
+        <p>Girilen veriler gerçek zamanlı olarak merkezi sisteme aktarılır. 30-40 kullanıcının eş zamanlı girişleri çakışma olmadan işlenir.</p>
+      </div>
+    </div>
+    <div class="flow-step">
+      <div class="flow-num">5</div>
+      <div class="flow-content">
+        <h3>Fark Raporu & Sonuçlandırma</h3>
+        <p>Sayım tamamlandığında sistem stoğu ile karşılaştırma otomatik yapılır. Fark raporu oluşturularak yönetim onayına sunulur.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="section">
+  <div class="section-label">Kazanımlar</div>
+  <div class="results-grid">
+    <div class="result-card">
+      <div class="result-icon">&#9201;</div>
+      <h3>Sayım Süresi</h3>
+      <p>Kağıt tabanlı sürece kıyasla sayım tamamlanma süresi önemli ölçüde kısaldı</p>
+    </div>
+    <div class="result-card">
+      <div class="result-icon">&#9989;</div>
+      <h3>Veri Doğruluğu</h3>
+      <p>Manuel kayıt hatalarının önüne geçilerek sayım doğruluğu maksimize edildi</p>
+    </div>
+    <div class="result-card">
+      <div class="result-icon">&#128200;</div>
+      <h3>Anlık Raporlama</h3>
+      <p>Sayım bitimini beklemeden canlı ilerleme ve fark raporlarına erişim sağlandı</p>
     </div>
   </div>
 </div>
@@ -265,12 +414,10 @@
 <div class="section">
   <div class="section-label">Teknolojiler</div>
   <div class="tech-list">
-    <span class="tech-tag">Python</span>
-    <span class="tech-tag">FastAPI</span>
-    <span class="tech-tag">SQLite</span>
     <span class="tech-tag">WiFi / Kablosuz Ağ</span>
     <span class="tech-tag">El Terminalleri</span>
     <span class="tech-tag">Barkod Sistemleri</span>
+    <span class="tech-tag">Gerçek Zamanlı Senkronizasyon</span>
   </div>
 </div>
 
