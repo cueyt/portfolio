@@ -1,0 +1,640 @@
+<title>Cüneyt Erdem CV</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap">
+<style>
+  /* Professional CV — clean corporate layout with teal accent */
+  :root {
+    --bg: #ffffff;
+    --fg: #1a1a2e;
+    --fg-secondary: #4a4a6a;
+    --accent: #0d9488;
+    --accent-dark: #134e4a;
+    --header-bg: #1a1a2e;
+    --header-fg: #f0f0f5;
+    --section-border: #0d9488;
+    --card-bg: #f8fafb;
+    --border: #e2e8f0;
+    --badge-green-bg: #d1fae5;
+    --badge-green-fg: #065f46;
+    --badge-blue-bg: #dbeafe;
+    --badge-blue-fg: #1e40af;
+    --badge-amber-bg: #fef3c7;
+    --badge-amber-fg: #92400e;
+    --badge-purple-bg: #ede9fe;
+    --badge-purple-fg: #5b21b6;
+    --font-display: 'Space Grotesk', system-ui, sans-serif;
+    --font-body: 'Inter', system-ui, sans-serif;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --bg: #0f1019;
+      --fg: #e8e8f0;
+      --fg-secondary: #a0a0b8;
+      --accent: #2dd4bf;
+      --accent-dark: #99f6e4;
+      --header-bg: #161625;
+      --header-fg: #f0f0f5;
+      --section-border: #2dd4bf;
+      --card-bg: #1a1a2e;
+      --border: #2a2a40;
+      --badge-green-bg: #064e3b;
+      --badge-green-fg: #a7f3d0;
+      --badge-blue-bg: #1e3a5f;
+      --badge-blue-fg: #93c5fd;
+      --badge-amber-bg: #78350f;
+      --badge-amber-fg: #fde68a;
+      --badge-purple-bg: #3b1f6e;
+      --badge-purple-fg: #c4b5fd;
+      color-scheme: dark;
+    }
+  }
+  :root[data-theme="dark"] {
+    --bg: #0f1019;
+    --fg: #e8e8f0;
+    --fg-secondary: #a0a0b8;
+    --accent: #2dd4bf;
+    --accent-dark: #99f6e4;
+    --header-bg: #161625;
+    --header-fg: #f0f0f5;
+    --section-border: #2dd4bf;
+    --card-bg: #1a1a2e;
+    --border: #2a2a40;
+    --badge-green-bg: #064e3b;
+    --badge-green-fg: #a7f3d0;
+    --badge-blue-bg: #1e3a5f;
+    --badge-blue-fg: #93c5fd;
+    --badge-amber-bg: #78350f;
+    --badge-amber-fg: #fde68a;
+    --badge-purple-bg: #3b1f6e;
+    --badge-purple-fg: #c4b5fd;
+    color-scheme: dark;
+  }
+
+  body {
+    background: var(--bg);
+    color: var(--fg);
+    font-family: var(--font-body);
+    line-height: 1.6;
+    padding-left: max(16px, env(safe-area-inset-left, 0px));
+    padding-right: max(16px, env(safe-area-inset-right, 0px));
+    max-width: 800px;
+    margin: 0 auto;
+  }
+
+  @media print {
+    body { max-width: none; padding: 0; font-size: 11pt; }
+    .header { break-after: avoid; }
+    .section { break-inside: avoid; }
+    .no-print { display: none !important; }
+  }
+  @page {
+    size: A4;
+    margin: 10mm;
+  }
+
+  * { box-sizing: border-box; }
+
+  .header {
+    background: var(--header-bg);
+    color: var(--header-fg);
+    padding: 32px 28px 24px;
+    border-radius: 10px;
+    margin-block: 20px 0;
+    border-top: 4px solid var(--accent);
+  }
+
+  .header h1 {
+    font-family: var(--font-display);
+    font-size: clamp(1.8rem, 5vw, 2.4rem);
+    font-weight: 700;
+    margin: 0 0 4px;
+    letter-spacing: -0.02em;
+  }
+
+  .header .subtitle {
+    font-size: 0.95rem;
+    font-weight: 500;
+    color: var(--accent);
+    margin-bottom: 14px;
+    font-family: var(--font-display);
+    letter-spacing: 0.01em;
+  }
+
+  .header .contact {
+    font-size: 0.82rem;
+    color: var(--fg-secondary);
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px 16px;
+  }
+
+  .header .contact span { white-space: nowrap; }
+
+  .section {
+    margin-top: 28px;
+  }
+
+  .section-title {
+    font-family: var(--font-display);
+    font-size: 0.85rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--accent);
+    padding-bottom: 8px;
+    border-bottom: 2px solid var(--section-border);
+    margin-bottom: 16px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .section-title::before {
+    content: '';
+    width: 4px;
+    height: 18px;
+    background: var(--accent);
+    border-radius: 2px;
+    flex-shrink: 0;
+  }
+
+  .profile-text {
+    font-size: 0.9rem;
+    color: var(--fg-secondary);
+    line-height: 1.7;
+  }
+
+  .profile-text strong {
+    color: var(--fg);
+    font-weight: 600;
+  }
+
+  /* Projects */
+  .project {
+    padding: 12px 0;
+    border-bottom: 1px solid var(--border);
+  }
+  .project:last-child { border-bottom: none; }
+
+  .project-header {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    flex-wrap: wrap;
+  }
+
+  .project-name {
+    font-family: var(--font-display);
+    font-size: 0.92rem;
+    font-weight: 600;
+    color: var(--fg);
+    flex: 1;
+    min-width: 0;
+  }
+
+  .badge {
+    font-size: 0.68rem;
+    font-weight: 600;
+    padding: 2px 8px;
+    border-radius: 4px;
+    white-space: nowrap;
+    letter-spacing: 0.03em;
+    text-transform: uppercase;
+    flex-shrink: 0;
+  }
+
+  .badge-green { background: var(--badge-green-bg); color: var(--badge-green-fg); }
+  .badge-blue { background: var(--badge-blue-bg); color: var(--badge-blue-fg); }
+  .badge-amber { background: var(--badge-amber-bg); color: var(--badge-amber-fg); }
+  .badge-purple { background: var(--badge-purple-bg); color: var(--badge-purple-fg); }
+
+  .project-desc {
+    font-size: 0.82rem;
+    color: var(--fg-secondary);
+    margin-top: 4px;
+    line-height: 1.55;
+  }
+
+  /* Experience */
+  .job {
+    padding: 14px 0;
+    border-bottom: 1px solid var(--border);
+  }
+  .job:last-child { border-bottom: none; }
+
+  .job-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    gap: 4px 12px;
+  }
+
+  .job-title {
+    font-family: var(--font-display);
+    font-size: 0.95rem;
+    font-weight: 700;
+    color: var(--fg);
+  }
+
+  .job-date {
+    font-size: 0.78rem;
+    color: var(--fg-secondary);
+    white-space: nowrap;
+    font-variant-numeric: tabular-nums;
+  }
+
+  .job-company {
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--accent);
+    margin-top: 2px;
+  }
+
+  .job-dept {
+    font-size: 0.78rem;
+    color: var(--fg-secondary);
+    font-style: italic;
+    margin-top: 1px;
+  }
+
+  .job ul {
+    margin: 6px 0 0;
+    padding-left: 18px;
+    list-style: none;
+  }
+
+  .job ul li {
+    font-size: 0.82rem;
+    color: var(--fg-secondary);
+    padding: 2px 0;
+    position: relative;
+    padding-left: 4px;
+  }
+
+  .job ul li::before {
+    content: '•';
+    position: absolute;
+    left: -14px;
+    color: var(--accent);
+    font-weight: 700;
+  }
+
+  /* Education */
+  .edu-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    gap: 2px 12px;
+    padding: 8px 0;
+    border-bottom: 1px solid var(--border);
+  }
+  .edu-item:last-child { border-bottom: none; }
+
+  .edu-name {
+    font-size: 0.88rem;
+    font-weight: 600;
+    color: var(--fg);
+  }
+
+  .edu-name span {
+    font-weight: 400;
+    color: var(--fg-secondary);
+  }
+
+  .edu-date {
+    font-size: 0.78rem;
+    color: var(--fg-secondary);
+    font-variant-numeric: tabular-nums;
+  }
+
+  /* Skills table */
+  .skills-grid {
+    display: grid;
+    grid-template-columns: 130px 1fr;
+    gap: 0;
+    font-size: 0.82rem;
+  }
+
+  @media (max-width: 500px) {
+    .skills-grid { grid-template-columns: 1fr; }
+    .skill-label { padding-top: 10px !important; }
+    .skill-value { padding-bottom: 10px !important; border-bottom: 1px solid var(--border); }
+  }
+
+  .skill-label {
+    font-weight: 600;
+    color: var(--fg);
+    padding: 7px 0;
+    font-family: var(--font-display);
+    font-size: 0.78rem;
+    letter-spacing: 0.02em;
+  }
+
+  .skill-value {
+    color: var(--fg-secondary);
+    padding: 7px 0;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .skills-grid .skill-label:last-of-type + .skill-value,
+  .skills-grid .skill-value:last-child { border-bottom: none; }
+
+  /* Personal info */
+  .personal-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px 24px;
+    font-size: 0.82rem;
+    color: var(--fg-secondary);
+  }
+
+  .personal-grid strong {
+    color: var(--fg);
+    font-weight: 600;
+  }
+
+  .footer-line {
+    margin-top: 32px;
+    padding-top: 12px;
+    border-top: 2px solid var(--accent);
+    text-align: center;
+    font-size: 0.72rem;
+    color: var(--fg-secondary);
+    padding-bottom: 20px;
+  }
+
+  .project-with-qr {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+  }
+  .project-with-qr .project-main { flex: 1; min-width: 0; }
+  .qr-block {
+    flex-shrink: 0;
+    text-align: center;
+    padding-top: 2px;
+  }
+  .qr-block img {
+    width: 56px;
+    height: 56px;
+    border-radius: 4px;
+  }
+  .qr-block .qr-label {
+    font-size: 0.6rem;
+    color: var(--fg-muted);
+    margin-top: 2px;
+    letter-spacing: 0.03em;
+  }
+  @media print {
+    .qr-block img { width: 50px; height: 50px; }
+  }
+</style>
+
+<div class="header">
+  <h1>Cüneyt Erdem</h1>
+  <div class="subtitle">Digital Transformation & Operations Excellence Specialist</div>
+  <div class="contact">
+    <span>+90 (506) 898 72 96</span>
+    <span>cuneyt_erdem.ce@hotmail.com</span>
+    <span>İstanbul, Büyükçekmece</span>
+  </div>
+</div>
+
+<!-- PROFİL ÖZETİ -->
+<div class="section">
+  <div class="section-title">Hakkımda</div>
+  <p class="profile-text">
+    Lojistik ve üretim sektörlerinde <strong>10+ yıl</strong> deneyime sahip, dijital dönüşüm, süreç geliştirme ve kurumsal yazılım projelerinde görev alan bir operasyon ve süreç geliştirme uzmanıyım. İş ihtiyaçlarını teknik gereksinimlere dönüştürerek operasyon ekipleri, iş birimleri ve yazılım ekipleri arasında köprü görevi görüyor; WMS, ERP (MS Dynamics 365) ve veri odaklı çözüm projelerinde aktif rol alıyorum.
+  </p>
+  <p class="profile-text" style="margin-top: 10px;">
+    Kariyerim boyunca ekip arkadaşlarımla birlikte yürüttüğümüz projelerde; depo operasyonlarının dijitalleştirilmesi, iş süreçlerinin standartlaştırılması, sistem entegrasyonları ve otomasyon çözümlerinin hayata geçirilmesi konularında sorumluluk üstlendim. Teknik bakış açısını operasyonel ihtiyaçlarla bir araya getirerek süreçlerin daha verimli, izlenebilir ve sürdürülebilir hale gelmesine katkı sağlamayı hedefliyorum.
+  </p>
+  <p class="profile-text" style="margin-top: 10px;">
+    Öztiryakiler'de gerçekleştirilen Depo Yönetim Sistemi dönüşüm çalışmalarında; mal kabul, depo transferleri, sipariş toplama ve otomatik irsaliye kesme süreçlerinin dijital ortama taşınması projelerinde ekip arkadaşlarımla birlikte görev aldım. Operasyon, saha ve yazılım ekiplerinin koordineli çalışmasıyla gerçekleştirilen canlı geçiş sürecinin kesintisiz tamamlanmasına katkı sağladım. Aynı dönemde geliştirilen açık sipariş takip otomasyonu ve depo sayım yönetim sistemleri sayesinde süreç görünürlüğünün artırılması ve manuel operasyonların azaltılması çalışmalarında aktif rol üstlendim.
+  </p>
+  <p class="profile-text" style="margin-top: 10px;">
+    Halen <strong>Kıdemli ERP Uzmanı</strong> olarak MS Dynamics 365 platformunun yönetimi, geliştirilmesi ve entegrasyon projelerinde teknik liderlik ve koordinasyon görevlerini yürütüyorum. İş birimleri ile BT ekipleri arasında iletişim ve iş birliğini güçlendirerek süreç iyileştirme ve otomasyon çalışmalarına destek veriyorum.
+  </p>
+  <p class="profile-text" style="margin-top: 10px;">
+    Özellikle veri analitiği, satış tahminleme, simülasyon modelleri ve karar destek sistemleri alanlarına ilgi duyuyor; istatistiksel modelleme, Monte Carlo simülasyonları ve operasyonel planlamaya yönelik analitik çözümler üzerinde çalışmalar gerçekleştiriyorum. <strong>Yönetim Bilişim Sistemleri</strong> yüksek lisans eğitimime devam etmekteyim.
+  </p>
+  <p class="profile-text" style="margin-top: 10px;">
+    Başarıların güçlü ekip çalışmasıyla ortaya çıktığına inanıyor; operasyon ekipleri, iş birimleri ve yazılım ekipleriyle ortak hedefler doğrultusunda çalışarak sürdürülebilir ve ölçülebilir değer üretmeye odaklanıyorum.
+  </p>
+</div>
+
+<!-- ÖNE ÇIKAN PROJELER -->
+<div class="section">
+  <div class="section-title">Öne Çıkan Projeler & Dijital Dönüşüm İmzaları</div>
+
+  <div class="project project-with-qr">
+    <div class="project-main">
+      <div class="project-header">
+        <div class="project-name">Terminal WMS — Süreç Mimarisi & Operasyonel Geçiş</div>
+        <span class="badge badge-green">Tamamlandı | Yeni Versiyon Devrede</span>
+      </div>
+      <div class="project-desc">WMS süreç mimarisini sıfırdan tasarlayarak mal kabul, depo transferleri, sipariş toplama ve otomatik irsaliye kesme süreçlerini uçtan uca dijitalleştirdim. Saha personelinin adaptasyonunu bizzat yöneterek canlıya geçişi sıfır kesinti ile tamamladım.</div>
+    </div>
+    <div class="qr-block">
+      <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAIwAAACMAQAAAACGu3yTAAABXUlEQVR4nK2WUW7kMAxDqWD+6Rvk/sfyDagTsKC76Ed3sZhGzccgMibEEy0zKePb1df3FeDNpa6q7kZ3oVK8+yD+ul4wGoubS81TPOdCFwistcGdYqIFoLEN3P3jB/+xRHBtaP3/X28s0RHbi2k1xWOtCo2+yhSPtWDbsgJnneK5lnSaE2BK5oyL4aFAUoQmXABE0gE0ONISTDB4tjnSsg3Dyg1j3URLIGV87ibFSY+2eIYi/UV7wIU/QlbuJ1ovuJM5aiz02dYJl4NzuDIdA++vZhUXEzwy1uaAS8p8AgxfnJv4RSUeBK6M/SRXXygCLiy2K3ZNvHeOtTKvCYqR96h9o28BhX3O+sR75RwdooM5zVWQGS1YHGhd51VtwdnLHs39la6wsBu6QUxmAlLm3V/lIHOu/DT7xA7New+5JBy6c5KGWegkNE9eeJD3r7itxFevJGv5+bdc/eJ34QfZqQTvwcd7iQAAAABJRU5ErkJggg==" alt="QR">
+      <div class="qr-label">Detaylar</div>
+    </div>
+  </div>
+
+  <div class="project">
+    <div class="project-header">
+      <div class="project-name">AX 365 Sistem Geçişi — MS Dynamics 365 ERP Entegrasyonu</div>
+      <span class="badge badge-blue">Aktif — Devam Ediyor</span>
+    </div>
+    <div class="project-desc">Tüm lojistik ve depo operasyonlarının Microsoft Dynamics 365 platformuna entegrasyonunu uçtan uca proje yöneticisi olarak sevk ve idare ediyorum.</div>
+  </div>
+
+  <div class="project project-with-qr">
+    <div class="project-main">
+      <div class="project-header">
+        <div class="project-name">Açık Sipariş Takip & Otomasyon Sistemi</div>
+        <span class="badge badge-green">Tamamlandı | Canlı Kullanımda</span>
+      </div>
+      <div class="project-desc">Açık siparişlerin anlık takibi, yaşlandırma analizi, otomatik uyarı ve eskalasyon mekanizması ile gecikmeleri ortadan kaldıran otomasyon sistemini tasarlayıp devreye aldım. Departman bazlı görünüm ve performans raporlama ile yönetim karar desteği sağlar.</div>
+    </div>
+    <div class="qr-block">
+      <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAIwAAACMAQAAAACGu3yTAAABWUlEQVR4nKVV223DQAzjBfmnNvD+Y3kDagIWPCP9SIsite7DtgQfoQdFLePt9OPdA3zo6rVWd6N7YcX49CJ+nCeMBo6TJXAb9+NCL7BQdQJnjAkWgIYMHP3vi7+4SNQJ1d9/feBiOtlnMZAxbmOtRKNvM8ZtLNi2bAPMpz3AkghCAkzJnMQlw6IpkFRQJ/xiowvUiT6ag9pDSnK0d7nIQVxIdqKVJoQUoz4CvKCUuomj2lsUZSQ/YsIJb4ppxxbODrCWM9EH1FyJsnxfC6EwTFfNgBBsMkPcVKUkG6PaOyUyTNhIC+5jPdthPpdYwZ3oKvYcOq/Q1hrxXpaYub4qN+O9GNbvh6I7k9kWQtMtN2nrVFeR3JiEOcB67FVNwQVluY32kB2MaugAh5wQdidf5khztGsOpYmmR3qfI6qaqxeKkxx9CWr0fu+kSY7XXtM1S9JIC98997XwCxi3GqfVqcAgAAAAAElFTkSuQmCC" alt="QR">
+      <div class="qr-label">Detaylar</div>
+    </div>
+  </div>
+
+  <div class="project project-with-qr">
+    <div class="project-main">
+      <div class="project-header">
+        <div class="project-name">Depo Sayım Yönetim Sistemi</div>
+        <span class="badge badge-green">Tamamlandı | 30-40 Terminal</span>
+      </div>
+      <div class="project-desc">30-40 kullanıcının eş zamanlı çalışabildiği gerçek zamanlı sayım sistemi. Kullanıcı bazlı görev atama, terminallere iş emri aktarımı, anlık ilerleme takibi ve fark analizi ile kağıt tabanlı süreçleri tamamen ortadan kaldırdım.</div>
+    </div>
+    <div class="qr-block">
+      <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAIwAAACMAQAAAACGu3yTAAABVUlEQVR4nK1WQY7DQAgzVe/mB/3/s/oD8wKvPLlUPe2GRdEoRIplwMCU8WXz+P4C/PLTVBUahcLMce5jwdbMGEIjzgZrCnDPsMjjLLCOGZjz/PXHT3vmYKlBsRRvwYsG+ALfr/JxbmOVGjh0jsW5jQXbliD4vNr3sR4n5WS7OV2ovh8jLBDMAdDCghdEyDJI05BWWAJDS2EVchssU4ZJ0hI3uYeCBtsILXPB6wmjQPRwoBpwUUcpSTdTAJHQKkancxh1kPAGy07ScZSfKux4UT5qIIl1jEwv0nKGK1dadZKuJF/pphUWeYnsml4rrTrDBkf5kcYixmcmTpFTLk27VlolMiWuMYgU8j4v6lpBnR5yNtFGE4AvainEJl+IUO2j0oyKjVYfZ1UP8PZrVM1e7lpAxRGKM+s7QI+7q89uwzJfOEsy0t/p/uBlgWR95Lx/B/jHe+EPhKQJNt+N9qYAAAAASUVORK5CYII=" alt="QR">
+      <div class="qr-label">Detaylar</div>
+    </div>
+  </div>
+
+  <div class="project">
+    <div class="project-header">
+      <div class="project-name">AI Suite / ML Platformu (Kişisel Proje)</div>
+      <span class="badge badge-blue">Aktif Geliştirme</span>
+    </div>
+    <div class="project-desc">XGBoost, LSTM, GRU gibi ML modellerini no-code arayüzle eğitmeyi sağlayan 29.000+ satır Python masaüstü platform. SHAP/LIME, ONNX ve Claude API entegrasyonu içermekte.</div>
+  </div>
+
+  <div class="project">
+    <div class="project-header">
+      <div class="project-name">Konteyner Yük Optimizasyon Algoritması (Kişisel Proje)</div>
+      <span class="badge badge-blue">Aktif Geliştirme</span>
+    </div>
+    <div class="project-desc">Sıfırdan geliştirilen 3D bin packing motoru. 6-yönlü rotasyon, height-map ve corner-point algoritmaları ile konteyner doluluğunu maksimize eder. JavaFX 3D görselleştirme destekli.</div>
+  </div>
+</div>
+
+<!-- İŞ DENEYİMLERİ -->
+<div class="section">
+  <div class="section-title">İş Deneyimleri</div>
+
+  <div class="job">
+    <div class="job-top">
+      <div class="job-title">Kıdemli ERP Uzmanı</div>
+      <div class="job-date">Ekim 2026 – Devam ediyor | İstanbul</div>
+    </div>
+    <div class="job-company">Öztiryakiler Madeni Eşya Paz. A.Ş.</div>
+    <div class="job-dept">Bilgi İşlem Departmanı</div>
+    <ul>
+      <li>MS Dynamics 365 ERP sisteminin yönetimi, geliştirilmesi ve optimizasyonu</li>
+      <li>ERP entegrasyon projelerinin uçtan uca koordinasyonu ve teknik liderlik</li>
+      <li>İş birimleri ile BT arasında köprü kurarak süreç iyileştirme ve otomasyon çözümleri geliştirme</li>
+      <li>Sistem altyapısı, veri bütünlüğü ve kullanıcı yetkilendirme süreçlerinin yönetimi</li>
+      <li>Ürün ağacı, BOM, rota ve malzeme ana verilerinin doğruluğunu ve tutarlılığını sağlayarak kurumsal veri standartlarını oluşturma; departmanlar arası veri kalitesini sürdürülebilir bir yapıyla yönetme</li>
+    </ul>
+  </div>
+
+  <div class="job">
+    <div class="job-top">
+      <div class="job-title">Süreç / Proses Geliştirme Uzmanı</div>
+      <div class="job-date">Kasım 2023 – Ekim 2026 | İstanbul</div>
+    </div>
+    <div class="job-company">Öztiryakiler Madeni Eşya Paz. A.Ş.</div>
+    <div class="job-dept">Lojistik Departmanı</div>
+    <ul>
+      <li>Lojistik ve depo operasyonlarında stratejik süreç boşluklarını tespit ederek uçtan uca sistemler tasarlama</li>
+      <li>WMS süreç mimarisini sıfırdan tasarlayarak sıfır kesinti ile canlı geçiş yönetimi
+        <ul style="margin:4px 0 2px; padding-left:16px; list-style:none;">
+          <li style="padding-left:4px;">– Üretim ve dış alım kaynaklı mal kabul süreçlerinin yapılandırılması</li>
+          <li style="padding-left:4px;">– Depo içi ve depolar arası transfer akışlarının oluşturulması</li>
+          <li style="padding-left:4px;">– Sipariş toplama süreçlerinin tasarlanması ve terminal üzerinden yönlendirme</li>
+          <li style="padding-left:4px;">– Otomatik irsaliye kesme ile sevkiyat sürecinin hızlandırılması</li>
+        </ul>
+      </li>
+      <li>MS Dynamics 365 ERP entegrasyon projesinde uçtan uca proje yönetimi</li>
+      <li>KPI sistemleri ve iş zekâsı altyapıları kurarak yönetim karar destek mekanizmaları oluşturma</li>
+      <li>Açık sipariş takip otomasyon sistemi geliştirme</li>
+
+    </ul>
+  </div>
+
+  <div class="job">
+    <div class="job-top">
+      <div class="job-title">İhracat Operasyon Uzmanı</div>
+      <div class="job-date">Ekim 2021 – Temmuz 2023 | İstanbul</div>
+    </div>
+    <div class="job-company">Öztiryakiler Madeni Eşya Paz. A.Ş.</div>
+    <div class="job-dept">Lojistik Departmanı</div>
+    <ul>
+      <li>İhracat operasyon ve lojistik süreçlerinin uçtan uca yönetimi</li>
+      <li>Sistem düzenlemeleri ve süreç iyileştirme projelerinde aktif rol</li>
+    </ul>
+  </div>
+
+  <div class="job">
+    <div class="job-top">
+      <div class="job-title">İhracat Operasyon Uzmanı</div>
+      <div class="job-date">Ağustos 2020 – Ekim 2021 | İstanbul</div>
+    </div>
+    <div class="job-company">Kale Kayışları</div>
+    <div class="job-dept">İhracat Operasyon Departmanı</div>
+    <ul>
+      <li>Akreditifli ve evrak mukabili ihracat işlemlerinin kontrolü ve müşteri iletişimi</li>
+      <li>İhracat, Gümrük, Nakliye ve Banka operasyonlarının takibi ve raporlanması</li>
+    </ul>
+  </div>
+
+  <div class="job">
+    <div class="job-top">
+      <div class="job-title">İhracat Operasyon Uzmanı</div>
+      <div class="job-date">Eylül 2017 – Nisan 2020 | İstanbul</div>
+    </div>
+    <div class="job-company">Smf Sert Metal Kalıp A.Ş.</div>
+    <div class="job-dept">İhracat Operasyon Departmanı</div>
+    <ul>
+      <li>İhracat ve gümrük operasyon işlemlerinin koordinasyonu</li>
+      <li>Nakliye organizasyonu, fatura takibi ve müşteri hesap yönetimi</li>
+    </ul>
+  </div>
+
+  <div class="job">
+    <div class="job-top">
+      <div class="job-title">İhracat Operasyon Uzmanı</div>
+      <div class="job-date">Ekim 2015 – Eylül 2017 | İstanbul</div>
+    </div>
+    <div class="job-company">Polipa Plastik Ambalaj</div>
+    <div class="job-dept">İhracat Operasyon Departmanı</div>
+    <ul>
+      <li>Stok takibi, sevkiyat planlaması ve müşteri hesap kontrolleri</li>
+    </ul>
+  </div>
+</div>
+
+<!-- EĞİTİM -->
+<div class="section">
+  <div class="section-title">Eğitim</div>
+  <div class="edu-item">
+    <div class="edu-name">Yüksek Lisans — İstanbul Üniversitesi <span>— Yönetim Bilişim Sistemleri</span></div>
+    <div class="edu-date">Eylül 2025 – Devam ediyor</div>
+  </div>
+  <div class="edu-item">
+    <div class="edu-name">Lisans — Kütahya Dumlupınar Üniversitesi <span>— İktisat</span></div>
+    <div class="edu-date">2006 – 2010</div>
+  </div>
+</div>
+
+<!-- TEKNİK YETKİNLİKLER -->
+<div class="section">
+  <div class="section-title">Teknik Yetkinlikler & Araçlar</div>
+  <div class="skills-grid">
+    <div class="skill-label">ERP / Sistemler</div>
+    <div class="skill-value">MS Dynamics 365 (AX) • WMS Süreç Mimarisi</div>
+    <div class="skill-label">Veri & Analiz</div>
+    <div class="skill-value">Excel / VBA Makro (İleri) • Power BI (Orta) • SQL (Başlangıç)</div>
+    <div class="skill-label">AI / ML</div>
+    <div class="skill-value">Machine Learning, Monte Carlo simülasyon ve tahmin modellerinin kurulması ve analizi</div>
+    <div class="skill-label">Proje Yönetimi</div>
+    <div class="skill-value">Uçtan Uca Proje Liderliği • Süreç Mimarisi • Değişim Yönetimi • KPI Tasarımı</div>
+    <div class="skill-label">Sektör</div>
+    <div class="skill-value">Lojistik • Depo Yönetimi • Tedarik Zinciri • Üretim • İhracat</div>
+    <div class="skill-label">Dil</div>
+    <div class="skill-value">Türkçe (Ana dil) • İngilizce (Orta — B1/B2)</div>
+  </div>
+</div>
+
+<!-- KİŞİSEL BİLGİLER -->
+<div class="section">
+  <div class="section-title">Kişisel Bilgiler</div>
+  <div class="personal-grid">
+    <span><strong>Doğum Yılı:</strong> 1987 (39 Yaş)</span>
+    <span><strong>Cinsiyet:</strong> Erkek</span>
+    <span><strong>Askerlik:</strong> Tamamlandı</span>
+    <span><strong>Ehliyet:</strong> B Sınıfı</span>
+  </div>
+</div>
+
+<div class="footer-line">
+  Cüneyt Erdem • cuneyt_erdem.ce@hotmail.com • +90 (506) 898 72 96
+</div>
