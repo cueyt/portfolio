@@ -166,6 +166,78 @@
     color: var(--fg-muted);
     margin-top: 4px;
   }
+  .flow {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+  }
+  .flow-step {
+    display: flex;
+    align-items: flex-start;
+    gap: 14px;
+    padding: 14px 0;
+  }
+  .flow-num {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background: var(--accent);
+    color: #fff;
+    font-family: var(--font-display);
+    font-size: 0.8rem;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+  .flow-content h3 {
+    font-family: var(--font-display);
+    font-size: 0.85rem;
+    font-weight: 600;
+    margin: 0;
+    color: var(--fg);
+  }
+  .flow-content p {
+    font-size: 0.78rem;
+    color: var(--fg-muted);
+    margin: 3px 0 0;
+    line-height: 1.5;
+  }
+  .problem-box {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-left: 3px solid var(--accent);
+    border-radius: 8px;
+    padding: 16px 18px;
+    margin-top: 12px;
+  }
+  .problem-box h3 {
+    font-family: var(--font-display);
+    font-size: 0.82rem;
+    font-weight: 600;
+    margin: 0 0 8px;
+    color: var(--fg);
+  }
+  .problem-box ul {
+    margin: 0;
+    padding-left: 18px;
+    list-style: none;
+  }
+  .problem-box li {
+    font-size: 0.78rem;
+    color: var(--fg-muted);
+    padding: 3px 0;
+    position: relative;
+    padding-left: 4px;
+  }
+  .problem-box li::before {
+    content: '•';
+    position: absolute;
+    left: -14px;
+    color: var(--accent);
+    font-weight: 700;
+  }
   .tech-list {
     display: flex;
     flex-wrap: wrap;
@@ -203,7 +275,16 @@
 
 <div class="section">
   <div class="section-label">Proje Özeti</div>
-  <p>Depo sipariş süreçlerinin manuel takibinden kaynaklanan gecikme ve hataları ortadan kaldırmak amacıyla tasarladığım otomasyon sistemi. Açık siparişlerin anlık durumunu izleyerek, geciken ve kritik siparişleri otomatik olarak raporlar. Ekip arkadaşları tarafından günlük operasyonlarda aktif olarak kullanılmaktadır.</p>
+  <p>Depo sipariş süreçlerinin manuel takibinden kaynaklanan gecikme, bilgi eksikliği ve hataları ortadan kaldırmak amacıyla sıfırdan tasarladığım otomasyon sistemi. Açık siparişlerin anlık durumunu izleyerek geciken ve kritik siparişleri otomatik olarak raporlar, sorumlu ekiplere bildirim gönderir ve yönetim için karar destek verileri üretir. Ekip arkadaşları tarafından günlük operasyonlarda aktif olarak kullanılmaktadır.</p>
+  <div class="problem-box">
+    <h3>Çözülen Problemler</h3>
+    <ul>
+      <li>Siparişlerin hangi aşamada olduğunun bilinmemesi ve manuel Excel takibine bağımlılık</li>
+      <li>Geciken siparişlerin fark edilmemesi, müşteri şikayetlerinin artması</li>
+      <li>Departmanlar arası iletişim kopuklukları ve sorumluluk belirsizliği</li>
+      <li>Yönetim için güncel ve güvenilir sipariş verilerine erişim zorluğu</li>
+    </ul>
+  </div>
 </div>
 
 <div class="section">
@@ -211,23 +292,74 @@
   <div class="features">
     <div class="feature-card">
       <div class="icon-circle">&#128270;</div>
-      <h3>Anlık İzleme</h3>
-      <p>Tüm açık siparişlerin durumunun gerçek zamanlı takibi ve görselleştirilmesi.</p>
+      <h3>Anlık Sipariş İzleme</h3>
+      <p>Tüm açık siparişlerin durumu tek bir ekrandan gerçek zamanlı takip edilir. Sipariş bazında detay görüntüleme, filtreleme ve arama özellikleri sunar.</p>
     </div>
     <div class="feature-card">
       <div class="icon-circle">&#9889;</div>
-      <h3>Otomatik Uyarılar</h3>
-      <p>Geciken ve kritik siparişlerin otomatik tespiti ve bildirim mekanizması.</p>
+      <h3>Otomatik Uyarı & Eskalasyon</h3>
+      <p>Belirlenen süre eşiklerini aşan siparişler otomatik tespit edilir. Gecikme seviyesine göre kademeli bildirimler ilgili sorumluya ve yöneticiye iletilir.</p>
+    </div>
+    <div class="feature-card">
+      <div class="icon-circle">&#128337;</div>
+      <h3>Sipariş Yaşlandırma Analizi</h3>
+      <p>Açık siparişler yaşlarına göre gruplandırılarak (0-3 gün, 3-7 gün, 7+ gün) kritik olanlar öne çıkarılır. Kronik gecikme eğilimleri tespit edilir.</p>
+    </div>
+    <div class="feature-card">
+      <div class="icon-circle">&#128101;</div>
+      <h3>Departman Bazlı Görünüm</h3>
+      <p>Her departman yalnızca kendi sorumluluğundaki siparişleri görür. Satış, depo ve sevkiyat ekiplerinin ihtiyacına göre özelleştirilmiş panolar sunar.</p>
     </div>
     <div class="feature-card">
       <div class="icon-circle">&#128202;</div>
-      <h3>Raporlama</h3>
-      <p>Sipariş performans metrikleri ve trend analizleri ile yönetim karar desteği.</p>
+      <h3>Performans Raporlama</h3>
+      <p>Sipariş tamamlanma süreleri, gecikme oranları ve trend analizleri ile yönetim karar desteği sağlar. Haftalık ve aylık performans karşılaştırması sunar.</p>
     </div>
     <div class="feature-card">
       <div class="icon-circle">&#128260;</div>
-      <h3>ERP Entegrasyon</h3>
-      <p>MS Dynamics 365 ile entegre çalışarak veri tutarlılığını sağlama.</p>
+      <h3>ERP Entegrasyonu</h3>
+      <p>MS Dynamics 365 sistemi ile entegre çalışarak sipariş, stok ve sevkiyat verilerinin tutarlılığını sağlar. Manuel veri girişi ihtiyacını ortadan kaldırır.</p>
+    </div>
+  </div>
+</div>
+
+<div class="section">
+  <div class="section-label">Süreç Akışı</div>
+  <div class="flow">
+    <div class="flow-step">
+      <div class="flow-num">1</div>
+      <div class="flow-content">
+        <h3>Sipariş Girişi & Veri Çekme</h3>
+        <p>ERP sisteminden açık sipariş verileri otomatik olarak çekilir. Müşteri bilgileri, ürün detayları, miktar ve termin tarihleri eşleştirilir.</p>
+      </div>
+    </div>
+    <div class="flow-step">
+      <div class="flow-num">2</div>
+      <div class="flow-content">
+        <h3>Durum Sınıflandırma & Önceliklendirme</h3>
+        <p>Siparişler termin tarihine ve müşteri önceliğine göre otomatik sınıflandırılır. Acil, normal ve planlı kategorilere ayrılarak sıralanır.</p>
+      </div>
+    </div>
+    <div class="flow-step">
+      <div class="flow-num">3</div>
+      <div class="flow-content">
+        <h3>Anlık İzleme & Uyarı</h3>
+        <p>Her sipariş gerçek zamanlı izlenir. Belirlenen eşik süreler aşıldığında sistem otomatik uyarı oluşturur ve sorumlu ekibe bildirim gönderir.</p>
+      </div>
+    </div>
+    <div class="flow-step">
+      <div class="flow-num">4</div>
+      <div class="flow-content">
+        <h3>Hazırlık & Sevkiyat Koordinasyonu</h3>
+        <p>Depo ekibi sipariş toplama durumunu günceller. Sevkiyat planlaması ile sipariş hazırlık süreci uçtan uca koordine edilir.</p>
+      </div>
+    </div>
+    <div class="flow-step">
+      <div class="flow-num">5</div>
+      <div class="flow-content">
+        <h3>Tamamlanma & Performans Kaydı</h3>
+        <p>Sipariş kapatıldığında tamamlanma süresi ve gecikme verileri kaydedilir. Performans metrikleri yönetim raporlarına otomatik yansır.</p>
+      </div>
     </div>
   </div>
 </div>
@@ -248,6 +380,15 @@
       <div class="label">Sipariş Görünürlüğü</div>
     </div>
   </div>
+  <div class="problem-box" style="margin-top:14px;">
+    <h3>Somut Etkiler</h3>
+    <ul>
+      <li>Manuel Excel takibi tamamen ortadan kaldırıldı, operasyonel yük azaldı</li>
+      <li>Geciken siparişlerin tespit süresi saatlerden saniyelere indi</li>
+      <li>Departmanlar arası sipariş görünürlüğü sağlanarak koordinasyon güçlendirildi</li>
+      <li>Yönetim, anlık ve güvenilir veriye dayalı kararlar alabiliyor</li>
+    </ul>
+  </div>
 </div>
 
 <div class="section">
@@ -257,6 +398,7 @@
     <span class="tech-tag">Süreç Otomasyonu</span>
     <span class="tech-tag">KPI Raporlama</span>
     <span class="tech-tag">Veri Entegrasyonu</span>
+    <span class="tech-tag">Gerçek Zamanlı İzleme</span>
   </div>
 </div>
 
