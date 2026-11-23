@@ -1,0 +1,281 @@
+<title>Terminal WMS</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap">
+<style>
+  /* Layout: single-column portfolio case study with hero + process flow */
+  :root {
+    --bg: #f8fafb;
+    --fg: #1a1a2e;
+    --fg-muted: #5a5a78;
+    --accent: #0d9488;
+    --accent-light: #ccfbf1;
+    --surface: #ffffff;
+    --border: #e2e8f0;
+    --font-display: 'Space Grotesk', system-ui, sans-serif;
+    --font-body: 'Inter', system-ui, sans-serif;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --bg: #0f1019;
+      --fg: #e8e8f0;
+      --fg-muted: #9a9ab8;
+      --accent: #2dd4bf;
+      --accent-light: #0d3d38;
+      --surface: #1a1a2e;
+      --border: #2a2a40;
+      color-scheme: dark;
+    }
+  }
+  :root[data-theme="dark"] {
+    --bg: #0f1019;
+    --fg: #e8e8f0;
+    --fg-muted: #9a9ab8;
+    --accent: #2dd4bf;
+    --accent-light: #0d3d38;
+    --surface: #1a1a2e;
+    --border: #2a2a40;
+    color-scheme: dark;
+  }
+  body {
+    background: var(--bg);
+    color: var(--fg);
+    font-family: var(--font-body);
+    line-height: 1.7;
+    padding-left: max(16px, env(safe-area-inset-left, 0px));
+    padding-right: max(16px, env(safe-area-inset-right, 0px));
+    max-width: 720px;
+    margin: 0 auto;
+  }
+  .hero {
+    padding-block: 48px 32px;
+    border-bottom: 2px solid var(--accent);
+  }
+  .badge {
+    display: inline-block;
+    font-size: 0.7rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    background: var(--accent-light);
+    color: var(--accent);
+    padding: 4px 12px;
+    border-radius: 4px;
+    margin-bottom: 16px;
+  }
+  .hero h1 {
+    font-family: var(--font-display);
+    font-size: clamp(1.6rem, 5vw, 2.2rem);
+    font-weight: 700;
+    margin: 0 0 8px;
+    letter-spacing: -0.02em;
+    text-wrap: balance;
+  }
+  .hero .subtitle {
+    font-size: 1rem;
+    color: var(--fg-muted);
+    margin: 0;
+  }
+  .meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px 24px;
+    margin-top: 20px;
+    font-size: 0.82rem;
+    color: var(--fg-muted);
+  }
+  .meta strong { color: var(--fg); font-weight: 600; }
+  .section {
+    padding-block: 28px;
+    border-bottom: 1px solid var(--border);
+  }
+  .section:last-of-type { border-bottom: none; }
+  .section-label {
+    font-family: var(--font-display);
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--accent);
+    margin: 0 0 12px;
+  }
+  .section p {
+    font-size: 0.9rem;
+    color: var(--fg-muted);
+    margin: 0;
+  }
+  .flow {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+  }
+  .flow-step {
+    display: flex;
+    gap: 16px;
+    align-items: flex-start;
+  }
+  .flow-line {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    flex-shrink: 0;
+    width: 32px;
+  }
+  .flow-dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: var(--accent);
+    flex-shrink: 0;
+    margin-top: 4px;
+  }
+  .flow-connector {
+    width: 2px;
+    flex: 1;
+    background: var(--border);
+    min-height: 24px;
+  }
+  .flow-content {
+    padding-bottom: 20px;
+    min-width: 0;
+  }
+  .flow-content h3 {
+    font-family: var(--font-display);
+    font-size: 0.88rem;
+    font-weight: 600;
+    margin: 0 0 4px;
+  }
+  .flow-content p {
+    font-size: 0.82rem;
+    color: var(--fg-muted);
+    margin: 0;
+  }
+  .results {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+    gap: 12px;
+  }
+  .result-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 16px;
+    text-align: center;
+  }
+  .result-card .number {
+    font-family: var(--font-display);
+    font-size: 1.6rem;
+    font-weight: 700;
+    color: var(--accent);
+    font-variant-numeric: tabular-nums;
+  }
+  .result-card .label {
+    font-size: 0.75rem;
+    color: var(--fg-muted);
+    margin-top: 4px;
+  }
+  .tech-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+  .tech-tag {
+    font-size: 0.75rem;
+    font-weight: 500;
+    padding: 4px 10px;
+    border-radius: 4px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    color: var(--fg);
+  }
+  .author {
+    padding-block: 24px;
+    text-align: center;
+    font-size: 0.78rem;
+    color: var(--fg-muted);
+  }
+  .author strong { color: var(--fg); font-weight: 600; }
+</style>
+
+<div class="hero">
+  <div class="badge">Tamamlandı — Yeni Versiyon Devrede</div>
+  <h1>Terminal WMS — Süreç Mimarisi & Operasyonel Geçiş</h1>
+  <p class="subtitle">Depo Yönetim Sistemi'nin süreç mimarisinin sıfırdan tasarlanması ve canlıya geçişin sıfır kesinti ile tamamlanması.</p>
+  <div class="meta">
+    <span><strong>Şirket:</strong> Öztiryakiler</span>
+    <span><strong>Departman:</strong> Lojistik</span>
+    <span><strong>Rol:</strong> Süreç / Proses Geliştirme Uzmanı</span>
+    <span><strong>Dönem:</strong> 2023 – 2026</span>
+  </div>
+</div>
+
+<div class="section">
+  <div class="section-label">Proje Özeti</div>
+  <p>Öztiryakiler'in depo operasyonlarını dijitalleştirmek amacıyla WMS (Warehouse Management System) süreç mimarisini sıfırdan tasarladım. Saha personelinin adaptasyon sürecini bizzat yöneterek, operasyonel gereksinimlere tam uyumlu bir sistemi canlıya geçirdim. Proje, mal kabulden sevkiyata kadar tüm depo süreçlerini kapsayan uçtan uca bir dönüşüm projesidir.</p>
+</div>
+
+<div class="section">
+  <div class="section-label">Süreç Akışı</div>
+  <div class="flow">
+    <div class="flow-step">
+      <div class="flow-line"><div class="flow-dot"></div><div class="flow-connector"></div></div>
+      <div class="flow-content">
+        <h3>Mal Kabul</h3>
+        <p>Üretim ve dış alım kaynaklı mal kabul süreçlerinin yapılandırılması; barkod tabanlı giriş doğrulama ve stok eşleştirme.</p>
+      </div>
+    </div>
+    <div class="flow-step">
+      <div class="flow-line"><div class="flow-dot"></div><div class="flow-connector"></div></div>
+      <div class="flow-content">
+        <h3>Depo Transferleri</h3>
+        <p>Depo içi ve depolar arası transfer akışlarının oluşturulması; lokasyon bazlı stok hareketlerinin izlenebilirliği.</p>
+      </div>
+    </div>
+    <div class="flow-step">
+      <div class="flow-line"><div class="flow-dot"></div><div class="flow-connector"></div></div>
+      <div class="flow-content">
+        <h3>Sipariş Toplama & Paketleme</h3>
+        <p>Sipariş toplama ve paketleme süreçlerinin tasarlanması; terminal üzerinden anlık yönlendirme ve onay mekanizması.</p>
+      </div>
+    </div>
+    <div class="flow-step">
+      <div class="flow-line"><div class="flow-dot"></div></div>
+      <div class="flow-content">
+        <h3>İş Emirleri & Takip</h3>
+        <p>Terminallere iş emirlerinin aktarımı, takibi ve süreç akışının yönetilmesi; anlık durum güncelleme ve performans izleme.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="section">
+  <div class="section-label">Sonuçlar</div>
+  <div class="results">
+    <div class="result-card">
+      <div class="number">0</div>
+      <div class="label">Kesinti ile Canlı Geçiş</div>
+    </div>
+    <div class="result-card">
+      <div class="number">V2</div>
+      <div class="label">Yeni Versiyon Devrede</div>
+    </div>
+    <div class="result-card">
+      <div class="number">4</div>
+      <div class="label">Temel Süreç Modülü</div>
+    </div>
+  </div>
+</div>
+
+<div class="section">
+  <div class="section-label">Teknolojiler & Araçlar</div>
+  <div class="tech-list">
+    <span class="tech-tag">MS Dynamics 365</span>
+    <span class="tech-tag">WMS Süreç Mimarisi</span>
+    <span class="tech-tag">El Terminalleri</span>
+    <span class="tech-tag">Barkod Sistemleri</span>
+    <span class="tech-tag">ERP Entegrasyon</span>
+  </div>
+</div>
+
+<div class="author">
+  <strong>Cüneyt Erdem</strong> — Süreç / Proses Geliştirme Uzmanı, Öztiryakiler
+</div>

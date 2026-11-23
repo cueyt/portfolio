@@ -1,0 +1,265 @@
+<title>Açık Sipariş Takip</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap">
+<style>
+  :root {
+    --bg: #f8fafb;
+    --fg: #1a1a2e;
+    --fg-muted: #5a5a78;
+    --accent: #2563eb;
+    --accent-light: #dbeafe;
+    --surface: #ffffff;
+    --border: #e2e8f0;
+    --success: #059669;
+    --success-light: #d1fae5;
+    --font-display: 'Space Grotesk', system-ui, sans-serif;
+    --font-body: 'Inter', system-ui, sans-serif;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --bg: #0f1019;
+      --fg: #e8e8f0;
+      --fg-muted: #9a9ab8;
+      --accent: #60a5fa;
+      --accent-light: #1e3a5f;
+      --surface: #1a1a2e;
+      --border: #2a2a40;
+      --success: #34d399;
+      --success-light: #064e3b;
+      color-scheme: dark;
+    }
+  }
+  :root[data-theme="dark"] {
+    --bg: #0f1019;
+    --fg: #e8e8f0;
+    --fg-muted: #9a9ab8;
+    --accent: #60a5fa;
+    --accent-light: #1e3a5f;
+    --surface: #1a1a2e;
+    --border: #2a2a40;
+    --success: #34d399;
+    --success-light: #064e3b;
+    color-scheme: dark;
+  }
+  body {
+    background: var(--bg);
+    color: var(--fg);
+    font-family: var(--font-body);
+    line-height: 1.7;
+    padding-left: max(16px, env(safe-area-inset-left, 0px));
+    padding-right: max(16px, env(safe-area-inset-right, 0px));
+    max-width: 720px;
+    margin: 0 auto;
+  }
+  .hero {
+    padding-block: 48px 32px;
+    border-bottom: 2px solid var(--accent);
+  }
+  .badge {
+    display: inline-block;
+    font-size: 0.7rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    background: var(--success-light);
+    color: var(--success);
+    padding: 4px 12px;
+    border-radius: 4px;
+    margin-bottom: 16px;
+  }
+  .hero h1 {
+    font-family: var(--font-display);
+    font-size: clamp(1.6rem, 5vw, 2.2rem);
+    font-weight: 700;
+    margin: 0 0 8px;
+    letter-spacing: -0.02em;
+    text-wrap: balance;
+  }
+  .hero .subtitle {
+    font-size: 1rem;
+    color: var(--fg-muted);
+    margin: 0;
+  }
+  .meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px 24px;
+    margin-top: 20px;
+    font-size: 0.82rem;
+    color: var(--fg-muted);
+  }
+  .meta strong { color: var(--fg); font-weight: 600; }
+  .section {
+    padding-block: 28px;
+    border-bottom: 1px solid var(--border);
+  }
+  .section:last-of-type { border-bottom: none; }
+  .section-label {
+    font-family: var(--font-display);
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--accent);
+    margin: 0 0 12px;
+  }
+  .section p {
+    font-size: 0.9rem;
+    color: var(--fg-muted);
+    margin: 0;
+  }
+  .features {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 12px;
+  }
+  .feature-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 16px;
+  }
+  .feature-card h3 {
+    font-family: var(--font-display);
+    font-size: 0.85rem;
+    font-weight: 600;
+    margin: 0 0 6px;
+  }
+  .feature-card p {
+    font-size: 0.78rem;
+    color: var(--fg-muted);
+    margin: 0;
+    line-height: 1.5;
+  }
+  .icon-circle {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    background: var(--accent-light);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 10px;
+    font-size: 0.9rem;
+  }
+  .results {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+    gap: 12px;
+  }
+  .result-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 16px;
+    text-align: center;
+  }
+  .result-card .number {
+    font-family: var(--font-display);
+    font-size: 1.6rem;
+    font-weight: 700;
+    color: var(--accent);
+    font-variant-numeric: tabular-nums;
+  }
+  .result-card .label {
+    font-size: 0.75rem;
+    color: var(--fg-muted);
+    margin-top: 4px;
+  }
+  .tech-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+  .tech-tag {
+    font-size: 0.75rem;
+    font-weight: 500;
+    padding: 4px 10px;
+    border-radius: 4px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    color: var(--fg);
+  }
+  .author {
+    padding-block: 24px;
+    text-align: center;
+    font-size: 0.78rem;
+    color: var(--fg-muted);
+  }
+  .author strong { color: var(--fg); font-weight: 600; }
+</style>
+
+<div class="hero">
+  <div class="badge">Tamamlandı — Canlı Kullanımda</div>
+  <h1>Açık Sipariş Takip & Otomasyon Sistemi</h1>
+  <p class="subtitle">Depo sipariş süreçlerini anlık izleyen ve otomatize eden otomasyon sistemi.</p>
+  <div class="meta">
+    <span><strong>Şirket:</strong> Öztiryakiler</span>
+    <span><strong>Departman:</strong> Lojistik</span>
+    <span><strong>Rol:</strong> Süreç / Proses Geliştirme Uzmanı</span>
+    <span><strong>Dönem:</strong> 2023 – 2026</span>
+  </div>
+</div>
+
+<div class="section">
+  <div class="section-label">Proje Özeti</div>
+  <p>Depo sipariş süreçlerinin manuel takibinden kaynaklanan gecikme ve hataları ortadan kaldırmak amacıyla tasarladığım otomasyon sistemi. Açık siparişlerin anlık durumunu izleyerek, geciken ve kritik siparişleri otomatik olarak raporlar. Ekip arkadaşları tarafından günlük operasyonlarda aktif olarak kullanılmaktadır.</p>
+</div>
+
+<div class="section">
+  <div class="section-label">Temel Özellikler</div>
+  <div class="features">
+    <div class="feature-card">
+      <div class="icon-circle">&#128270;</div>
+      <h3>Anlık İzleme</h3>
+      <p>Tüm açık siparişlerin durumunun gerçek zamanlı takibi ve görselleştirilmesi.</p>
+    </div>
+    <div class="feature-card">
+      <div class="icon-circle">&#9889;</div>
+      <h3>Otomatik Uyarılar</h3>
+      <p>Geciken ve kritik siparişlerin otomatik tespiti ve bildirim mekanizması.</p>
+    </div>
+    <div class="feature-card">
+      <div class="icon-circle">&#128202;</div>
+      <h3>Raporlama</h3>
+      <p>Sipariş performans metrikleri ve trend analizleri ile yönetim karar desteği.</p>
+    </div>
+    <div class="feature-card">
+      <div class="icon-circle">&#128260;</div>
+      <h3>ERP Entegrasyon</h3>
+      <p>MS Dynamics 365 ile entegre çalışarak veri tutarlılığını sağlama.</p>
+    </div>
+  </div>
+</div>
+
+<div class="section">
+  <div class="section-label">Kazanımlar</div>
+  <div class="results">
+    <div class="result-card">
+      <div class="number" style="font-size:1.2rem;">Canlı</div>
+      <div class="label">Aktif Kullanımda</div>
+    </div>
+    <div class="result-card">
+      <div class="number" style="font-size:1.2rem;">Ekip</div>
+      <div class="label">Günlük Kullanıcılar</div>
+    </div>
+    <div class="result-card">
+      <div class="number" style="font-size:1.2rem;">Anlık</div>
+      <div class="label">Sipariş Görünürlüğü</div>
+    </div>
+  </div>
+</div>
+
+<div class="section">
+  <div class="section-label">Teknolojiler & Araçlar</div>
+  <div class="tech-list">
+    <span class="tech-tag">MS Dynamics 365</span>
+    <span class="tech-tag">Süreç Otomasyonu</span>
+    <span class="tech-tag">KPI Raporlama</span>
+    <span class="tech-tag">Veri Entegrasyonu</span>
+  </div>
+</div>
+
+<div class="author">
+  <strong>Cüneyt Erdem</strong> — Süreç / Proses Geliştirme Uzmanı, Öztiryakiler
+</div>

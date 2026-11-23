@@ -1,0 +1,279 @@
+<title>Depo Sayım Sistemi</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap">
+<style>
+  :root {
+    --bg: #f8fafb;
+    --fg: #1a1a2e;
+    --fg-muted: #5a5a78;
+    --accent: #7c3aed;
+    --accent-light: #ede9fe;
+    --surface: #ffffff;
+    --border: #e2e8f0;
+    --success: #059669;
+    --success-light: #d1fae5;
+    --font-display: 'Space Grotesk', system-ui, sans-serif;
+    --font-body: 'Inter', system-ui, sans-serif;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --bg: #0f1019;
+      --fg: #e8e8f0;
+      --fg-muted: #9a9ab8;
+      --accent: #a78bfa;
+      --accent-light: #3b1f6e;
+      --surface: #1a1a2e;
+      --border: #2a2a40;
+      --success: #34d399;
+      --success-light: #064e3b;
+      color-scheme: dark;
+    }
+  }
+  :root[data-theme="dark"] {
+    --bg: #0f1019;
+    --fg: #e8e8f0;
+    --fg-muted: #9a9ab8;
+    --accent: #a78bfa;
+    --accent-light: #3b1f6e;
+    --surface: #1a1a2e;
+    --border: #2a2a40;
+    --success: #34d399;
+    --success-light: #064e3b;
+    color-scheme: dark;
+  }
+  body {
+    background: var(--bg);
+    color: var(--fg);
+    font-family: var(--font-body);
+    line-height: 1.7;
+    padding-left: max(16px, env(safe-area-inset-left, 0px));
+    padding-right: max(16px, env(safe-area-inset-right, 0px));
+    max-width: 720px;
+    margin: 0 auto;
+  }
+  .hero {
+    padding-block: 48px 32px;
+    border-bottom: 2px solid var(--accent);
+  }
+  .badges {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 16px;
+  }
+  .badge {
+    display: inline-block;
+    font-size: 0.7rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    padding: 4px 12px;
+    border-radius: 4px;
+  }
+  .badge-green { background: var(--success-light); color: var(--success); }
+  .badge-accent { background: var(--accent-light); color: var(--accent); }
+  .hero h1 {
+    font-family: var(--font-display);
+    font-size: clamp(1.6rem, 5vw, 2.2rem);
+    font-weight: 700;
+    margin: 0 0 8px;
+    letter-spacing: -0.02em;
+    text-wrap: balance;
+  }
+  .hero .subtitle {
+    font-size: 1rem;
+    color: var(--fg-muted);
+    margin: 0;
+  }
+  .meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px 24px;
+    margin-top: 20px;
+    font-size: 0.82rem;
+    color: var(--fg-muted);
+  }
+  .meta strong { color: var(--fg); font-weight: 600; }
+  .section {
+    padding-block: 28px;
+    border-bottom: 1px solid var(--border);
+  }
+  .section:last-of-type { border-bottom: none; }
+  .section-label {
+    font-family: var(--font-display);
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--accent);
+    margin: 0 0 12px;
+  }
+  .section p {
+    font-size: 0.9rem;
+    color: var(--fg-muted);
+    margin: 0;
+  }
+  .stats {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+    gap: 12px;
+  }
+  .stat-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 20px 16px;
+    text-align: center;
+  }
+  .stat-card .number {
+    font-family: var(--font-display);
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: var(--accent);
+    font-variant-numeric: tabular-nums;
+  }
+  .stat-card .label {
+    font-size: 0.75rem;
+    color: var(--fg-muted);
+    margin-top: 4px;
+  }
+  .arch {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+  .arch-layer {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 14px 16px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  .arch-icon {
+    width: 36px;
+    height: 36px;
+    border-radius: 8px;
+    background: var(--accent-light);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1rem;
+    flex-shrink: 0;
+  }
+  .arch-text h3 {
+    font-family: var(--font-display);
+    font-size: 0.85rem;
+    font-weight: 600;
+    margin: 0;
+  }
+  .arch-text p {
+    font-size: 0.78rem;
+    color: var(--fg-muted);
+    margin: 2px 0 0;
+    line-height: 1.4;
+  }
+  .tech-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+  .tech-tag {
+    font-size: 0.75rem;
+    font-weight: 500;
+    padding: 4px 10px;
+    border-radius: 4px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    color: var(--fg);
+  }
+  .author {
+    padding-block: 24px;
+    text-align: center;
+    font-size: 0.78rem;
+    color: var(--fg-muted);
+  }
+  .author strong { color: var(--fg); font-weight: 600; }
+</style>
+
+<div class="hero">
+  <div class="badges">
+    <span class="badge badge-green">Tamamlandı</span>
+    <span class="badge badge-accent">30-40 Terminal</span>
+  </div>
+  <h1>Depo Sayım Yönetim Sistemi</h1>
+  <p class="subtitle">30-40 kullanıcının eş zamanlı çalışabildiği, WiFi üzerinden el terminalleri ve akıllı telefonlarla erişilen gerçek zamanlı sayım yönetim sistemi.</p>
+  <div class="meta">
+    <span><strong>Şirket:</strong> Öztiryakiler</span>
+    <span><strong>Departman:</strong> Lojistik</span>
+    <span><strong>Rol:</strong> Süreç / Proses Geliştirme Uzmanı</span>
+    <span><strong>Dönem:</strong> 2023 – 2026</span>
+  </div>
+</div>
+
+<div class="section">
+  <div class="section-label">Proje Özeti</div>
+  <p>Öztiryakiler'in depo sayım süreçlerini dijitalleştirmek amacıyla geliştirilen gerçek zamanlı sayım yönetim sistemi. 30 ila 40 kullanıcının eş zamanlı olarak el terminalleri ve akıllı telefonlar üzerinden WiFi ağı ile bağlanarak sayım yapabilmesini sağlar. Kağıt tabanlı sayım süreçlerini tamamen ortadan kaldırarak hız, doğruluk ve izlenebilirlik kazandırmıştır.</p>
+</div>
+
+<div class="section">
+  <div class="section-label">Ölçek</div>
+  <div class="stats">
+    <div class="stat-card">
+      <div class="number">30-40</div>
+      <div class="label">Eş Zamanlı Terminal</div>
+    </div>
+    <div class="stat-card">
+      <div class="number" style="font-size:1.3rem;">Gerçek Zamanlı</div>
+      <div class="label">Veri Senkronizasyonu</div>
+    </div>
+    <div class="stat-card">
+      <div class="number" style="font-size:1.3rem;">WiFi</div>
+      <div class="label">Kablosuz Bağlantı</div>
+    </div>
+  </div>
+</div>
+
+<div class="section">
+  <div class="section-label">Sistem Mimarisi</div>
+  <div class="arch">
+    <div class="arch-layer">
+      <div class="arch-icon">&#128241;</div>
+      <div class="arch-text">
+        <h3>Kullanıcı Katmanı</h3>
+        <p>El terminalleri ve akıllı telefonlar üzerinden WiFi ile erişim; barkod okuma ve anlık veri girişi.</p>
+      </div>
+    </div>
+    <div class="arch-layer">
+      <div class="arch-icon">&#9889;</div>
+      <div class="arch-text">
+        <h3>Uygulama Katmanı</h3>
+        <p>Python / FastAPI tabanlı backend; gerçek zamanlı veri işleme ve çoklu kullanıcı yönetimi.</p>
+      </div>
+    </div>
+    <div class="arch-layer">
+      <div class="arch-icon">&#128451;</div>
+      <div class="arch-text">
+        <h3>Veri Katmanı</h3>
+        <p>SQLite veritabanı; sayım verileri, kullanıcı hareketleri ve stok eşleştirme kayıtları.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="section">
+  <div class="section-label">Teknolojiler</div>
+  <div class="tech-list">
+    <span class="tech-tag">Python</span>
+    <span class="tech-tag">FastAPI</span>
+    <span class="tech-tag">SQLite</span>
+    <span class="tech-tag">WiFi / Kablosuz Ağ</span>
+    <span class="tech-tag">El Terminalleri</span>
+    <span class="tech-tag">Barkod Sistemleri</span>
+  </div>
+</div>
+
+<div class="author">
+  <strong>Cüneyt Erdem</strong> — Süreç / Proses Geliştirme Uzmanı, Öztiryakiler
+</div>
