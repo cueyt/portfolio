@@ -173,6 +173,65 @@
     color: var(--fg-muted);
     margin-top: 4px;
   }
+  .features {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 14px;
+  }
+  .feature-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 18px 16px;
+    border-left: 3px solid var(--accent);
+  }
+  .feature-card h3 {
+    font-family: var(--font-display);
+    font-size: 0.85rem;
+    font-weight: 600;
+    margin: 0 0 6px;
+    color: var(--fg);
+  }
+  .feature-card p {
+    font-size: 0.78rem;
+    color: var(--fg-muted);
+    margin: 0;
+    line-height: 1.5;
+  }
+  .problem-box {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-left: 3px solid var(--accent);
+    border-radius: 8px;
+    padding: 16px 18px;
+    margin-top: 12px;
+  }
+  .problem-box h3 {
+    font-family: var(--font-display);
+    font-size: 0.82rem;
+    font-weight: 600;
+    margin: 0 0 8px;
+    color: var(--fg);
+  }
+  .problem-box ul {
+    margin: 0;
+    padding-left: 18px;
+    list-style: none;
+  }
+  .problem-box li {
+    font-size: 0.78rem;
+    color: var(--fg-muted);
+    padding: 3px 0;
+    position: relative;
+    padding-left: 4px;
+  }
+  .problem-box li::before {
+    content: '•';
+    position: absolute;
+    left: -14px;
+    color: var(--accent);
+    font-weight: 700;
+  }
   .tech-list {
     display: flex;
     flex-wrap: wrap;
@@ -211,6 +270,15 @@
 <div class="section">
   <div class="section-label">Proje Özeti</div>
   <p>Öztiryakiler'in depo operasyonlarını dijitalleştirmek amacıyla WMS (Warehouse Management System) süreç mimarisini sıfırdan tasarladım. Saha personelinin adaptasyon sürecini bizzat yöneterek, operasyonel gereksinimlere tam uyumlu bir sistemi canlıya geçirdim. Proje, mal kabulden sevkiyata kadar tüm depo süreçlerini kapsayan uçtan uca bir dönüşüm projesidir.</p>
+  <div class="problem-box">
+    <h3>Çözülen Problemler</h3>
+    <ul>
+      <li>Kağıt tabanlı ve manuel süreçlere bağımlılık; hata oranının yüksekliği</li>
+      <li>Depo içi stok hareketlerinin izlenememesi ve lokasyon belirsizliği</li>
+      <li>İrsaliye kesim süreçlerinin uzunluğu ve sevkiyat gecikmelerine neden olması</li>
+      <li>Saha personelinin sisteme adaptasyon direnci ve eğitim eksikliği</li>
+    </ul>
+  </div>
 </div>
 
 <div class="section">
@@ -220,48 +288,65 @@
       <div class="flow-line"><div class="flow-dot"></div><div class="flow-connector"></div></div>
       <div class="flow-content">
         <h3>Mal Kabul</h3>
-        <p>Üretim ve dış alım kaynaklı mal kabul süreçlerinin yapılandırılması; barkod tabanlı giriş doğrulama ve stok eşleştirme.</p>
+        <p>Üretim ve dış alım kaynaklı mal kabul süreçlerinin yapılandırılması. Gelen malzeme barkod okutma ile doğrulanır, satınalma siparişi ile eşleştirilir ve uygun depo lokasyonuna yönlendirilir. Miktar ve kalite uyumsuzlukları anında raporlanır.</p>
       </div>
     </div>
     <div class="flow-step">
       <div class="flow-line"><div class="flow-dot"></div><div class="flow-connector"></div></div>
       <div class="flow-content">
         <h3>Depo Transferleri</h3>
-        <p>Depo içi ve depolar arası transfer akışlarının oluşturulması; lokasyon bazlı stok hareketlerinin izlenebilirliği.</p>
+        <p>Depo içi ve depolar arası transfer akışlarının oluşturulması. Lokasyon bazlı stok hareketleri anlık izlenir, her transferin kim tarafından, ne zaman ve hangi gerekçeyle yapıldığı kayıt altına alınır. Stok tutarlılığı sürekli kontrol edilir.</p>
       </div>
     </div>
     <div class="flow-step">
       <div class="flow-line"><div class="flow-dot"></div><div class="flow-connector"></div></div>
       <div class="flow-content">
-        <h3>Sipariş Toplama & Paketleme</h3>
-        <p>Sipariş toplama ve paketleme süreçlerinin tasarlanması; terminal üzerinden anlık yönlendirme ve onay mekanizması.</p>
+        <h3>Sipariş Toplama</h3>
+        <p>Müşteri siparişlerine göre toplama listeleri otomatik oluşturulur ve terminallere iletilir. Kullanıcı, terminal üzerinden hangi lokasyondan hangi ürünü toplayacağını adım adım görür. Barkod doğrulama ile yanlış ürün toplama riski ortadan kaldırılır.</p>
       </div>
     </div>
     <div class="flow-step">
       <div class="flow-line"><div class="flow-dot"></div></div>
       <div class="flow-content">
-        <h3>İş Emirleri & Takip</h3>
-        <p>Terminallere iş emirlerinin aktarımı, takibi ve süreç akışının yönetilmesi; anlık durum güncelleme ve performans izleme.</p>
+        <h3>Otomatik İrsaliye Kesme & Sevkiyat</h3>
+        <p>Sipariş toplama tamamlandığında irsaliye terminal üzerinden otomatik olarak kesilir. Manuel evrak hazırlama süreci ortadan kaldırılarak sevkiyat başlama süresi önemli ölçüde kısaltılır. İrsaliye verileri ERP sistemine anlık aktarılır ve muhasebe entegrasyonu sağlanır.</p>
       </div>
     </div>
   </div>
 </div>
 
 <div class="section">
-  <div class="section-label">Sonuçlar</div>
-  <div class="results">
-    <div class="result-card">
-      <div class="number">0</div>
-      <div class="label">Kesinti ile Canlı Geçiş</div>
+  <div class="section-label">Temel Özellikler</div>
+  <div class="features">
+    <div class="feature-card">
+      <h3>Barkod Tabanlı Doğrulama</h3>
+      <p>Her işlem adımında barkod okutma zorunluluğu ile insan kaynaklı hatalar minimize edilir. Yanlış ürün, yanlış lokasyon ve miktar hataları sistem tarafından anında engellenir.</p>
     </div>
-    <div class="result-card">
-      <div class="number">V2</div>
-      <div class="label">Yeni Versiyon Devrede</div>
+    <div class="feature-card">
+      <h3>Lokasyon Yönetimi</h3>
+      <p>Depo içi her raf, koridor ve alan tanımlı lokasyonlarla yönetilir. Ürünlerin hangi lokasyonda olduğu anlık sorgulanabilir, yerleştirme ve toplama süreçleri optimize edilir.</p>
     </div>
-    <div class="result-card">
-      <div class="number">4</div>
-      <div class="label">Temel Süreç Modülü</div>
+    <div class="feature-card">
+      <h3>Terminalden İrsaliye</h3>
+      <p>Toplama süreci tamamlanan siparişler için irsaliye doğrudan el terminalinden kesilir. Ofise dönüp evrak hazırlama ihtiyacı ortadan kalkar, sevkiyat hızı artar.</p>
     </div>
+    <div class="feature-card">
+      <h3>Saha Personeli Adaptasyonu</h3>
+      <p>Kullanıcı dostu arayüz tasarımı ve sahada birebir eğitim programı ile personelin sisteme geçişi dirençsiz tamamlandı. Sürekli geri bildirim döngüsü ile arayüz iyileştirildi.</p>
+    </div>
+  </div>
+</div>
+
+<div class="section">
+  <div class="section-label">Kazanımlar</div>
+  <div class="problem-box">
+    <h3>Somut Etkiler</h3>
+    <ul>
+      <li>Kağıt tabanlı süreçler tamamen dijitale taşındı, operasyonel hatalar minimize edildi</li>
+      <li>Terminalden otomatik irsaliye kesme ile sevkiyat başlama süresi önemli ölçüde kısaldı</li>
+      <li>Lokasyon bazlı stok takibi sayesinde arama süreleri ve stok belirsizliği ortadan kalktı</li>
+      <li>Saha personeli sisteme tam adaptasyon sağladı, günlük operasyonlarda aktif kullanım devam ediyor</li>
+    </ul>
   </div>
 </div>
 
@@ -273,6 +358,7 @@
     <span class="tech-tag">El Terminalleri</span>
     <span class="tech-tag">Barkod Sistemleri</span>
     <span class="tech-tag">ERP Entegrasyon</span>
+    <span class="tech-tag">Otomatik İrsaliye</span>
   </div>
 </div>
 
