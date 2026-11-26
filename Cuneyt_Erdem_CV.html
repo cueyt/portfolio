@@ -1,4 +1,12 @@
 <title>Cüneyt Erdem CV</title>
+<!-- Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-HRP55JMMQ4"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-HRP55JMMQ4');
+</script>
 <meta name="claude:viewport-fit-sides" content="cover">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap">
 <style>
@@ -638,3 +646,18 @@
 <div class="footer-line">
   Cüneyt Erdem • cuneyt_erdem.ce@hotmail.com • +90 (506) 898 72 96
 </div>
+<script>
+document.querySelectorAll('.qr-block').forEach(function(link) {
+  link.addEventListener('click', function() {
+    var url = this.href;
+    var project = url.includes('terminal-wms') ? 'Terminal WMS' :
+                  url.includes('acik-siparis') ? 'Acik Siparis' :
+                  url.includes('depo-sayim') ? 'Depo Sayim' : 'Diger';
+    gtag('event', 'proje_tiklama', {
+      event_category: 'Proje',
+      event_label: project,
+      proje_adi: project
+    });
+  });
+});
+</script>
